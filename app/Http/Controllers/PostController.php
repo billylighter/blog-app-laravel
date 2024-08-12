@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Post;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
 
 class PostController extends Controller
 {
@@ -13,7 +14,7 @@ class PostController extends Controller
     public function index()
     {
         return view('posts.index', [
-            'posts' => Post::latest()->paginate(10),
+            'posts' => Post::with('user')->latest()->paginate(10),
             'with_content' => false
         ]);
     }
@@ -67,6 +68,10 @@ class PostController extends Controller
      */
     public function destroy(Post $post)
     {
-        //
+        Gate::authorize('delete', $post);
+
+        $post->delete();
+
+        return redirect(route('posts.index'));
     }
 }
