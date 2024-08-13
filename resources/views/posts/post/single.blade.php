@@ -65,7 +65,7 @@
                 <small class="ml-2 text-sm text-gray-600">{{ $post->created_at->format('g:i a') }}</small>
                 <br>
                 @unless ($post->created_at->eq($post->updated_at))
-                    <small class="text-sm text-gray-600"> &middot; {{ __('edited') }}</small>
+{{--                    <small class="text-sm text-gray-600"> &middot; {{ __('edited') }}</small>--}}
                 @endunless
             </div>
         </div>

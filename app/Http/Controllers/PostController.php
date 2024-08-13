@@ -52,7 +52,11 @@ class PostController extends Controller
      */
     public function edit(Post $post)
     {
-        return response('Hello from edit');
+        Gate::authorize('update', $post);
+
+        return view('posts.edit', [
+            'post' => $post
+        ]);
     }
 
     /**
@@ -60,7 +64,17 @@ class PostController extends Controller
      */
     public function update(Request $request, Post $post)
     {
-        //
+        Gate::authorize('update', $post);
+
+        $validated = $request->validate([
+            'title' => 'required|string|max:63',
+            'content' => 'required|string|max:255',
+            'image' => 'url:http,https'
+        ]);
+
+        $post->update($validated);
+
+        return redirect(route('posts.index') . '/' . $post->id);
     }
 
     /**
