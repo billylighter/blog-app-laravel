@@ -4,8 +4,8 @@
             {{ __('Back to posts') }}
         </a>
     </x-slot>
-    <div class="max-w-2xl mx-auto p-4 sm:p-6 lg:p-8">
-        <div class="mt-6 shadow-sm rounded-lg divide-y">
+    <div class="max-w-4xl mx-auto p-4 sm:p-6 lg:p-8">
+        <div class="shadow-sm rounded-lg divide-y">
             @include('posts.post.single')
         </div>
     </div>
