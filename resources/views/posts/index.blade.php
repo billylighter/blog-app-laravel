@@ -1,7 +1,12 @@
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+        <h2 class="font-semibold text-xl text-gray-800 leading-tight flex items-center justify-start">
             {{ __('Posts') }}
+            <a href="{{route('posts.create')}}"
+                class="ml-4 focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5  dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">
+                <strong>+</strong>
+                <span>New post</span>
+            </a>
         </h2>
     </x-slot>
 
